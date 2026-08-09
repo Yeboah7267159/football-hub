@@ -1,0 +1,10 @@
+{
+  "name": "JNR.BENZEMA Football Hub",
+  "short_name": "JNR Football",
+  "start_url": "./",
+  "display": "standalone",
+  "background_color": "#07111f",
+  "theme_color": "#1e90ff",
+  "description": "JNR.BENZEMA Football Hub - football news, players, teams and matches.",
+  "icons": []
+}
