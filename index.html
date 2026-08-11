@@ -3,9 +3,9 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>JNR.BENZEMA Football Hub</title>
-<link rel="manifest" href="manifest.json">
-  
+
+  <title>JNR SHOP</title>
+
   <style>
     * {
       box-sizing: border-box;
@@ -15,184 +15,458 @@
 
     body {
       font-family: Arial, sans-serif;
-      background: #07111f;
-      color: white;
+      background: #f5f5f5;
+      color: #222;
     }
 
     header {
-      background: #0d1b2a;
+      background: #111;
+      color: white;
       padding: 20px;
       text-align: center;
-      border-bottom: 2px solid #1e90ff;
+      position: sticky;
+      top: 0;
+      z-index: 10;
     }
 
     header h1 {
-      font-size: 30px;
+      margin-bottom: 15px;
+      font-size: 28px;
     }
 
-    header p {
-      margin-top: 8px;
-      color: #b9dfff;
+    #search {
+      width: 90%;
+      max-width: 500px;
+      padding: 13px;
+      border: none;
+      border-radius: 25px;
+      font-size: 16px;
+      outline: none;
     }
 
-    nav {
-      background: #102a43;
-      padding: 12px;
-      text-align: center;
-    }
-
-    nav a {
+    .deals {
+      background: #ff6b00;
       color: white;
-      text-decoration: none;
-      margin: 8px;
+      text-align: center;
+      padding: 12px;
+      font-size: 20px;
       font-weight: bold;
     }
 
-    .hero {
-      padding: 50px 20px;
-      text-align: center;
-      background: linear-gradient(135deg, #0b3d91, #111827);
+    .products {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 20px;
+      padding: 25px;
+      max-width: 1200px;
+      margin: auto;
     }
 
-    .hero h2 {
-      font-size: 36px;
+    .product {
+      background: white;
+      border-radius: 15px;
+      overflow: hidden;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.12);
+      transition: transform 0.2s;
+    }
+
+    .product:hover {
+      transform: translateY(-4px);
+    }
+
+    .product img {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+      display: block;
+    }
+
+    .product-info {
+      padding: 15px;
+    }
+
+    .product h3 {
+      margin-bottom: 8px;
+      font-size: 18px;
+    }
+
+    .price {
+      color: #e85d00;
+      font-size: 20px;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    .add-btn {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 8px;
+      background: #111;
+      color: white;
+      font-size: 15px;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    .add-btn:hover {
+      background: #ff6b00;
+    }
+
+    .cart {
+      max-width: 900px;
+      margin: 20px auto 40px;
+      background: white;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 3px 12px rgba(0,0,0,0.12);
+    }
+
+    .cart h2 {
       margin-bottom: 15px;
     }
 
-    .hero p {
-      font-size: 18px;
-      margin-bottom: 25px;
+    .cart-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 12px 0;
+      border-bottom: 1px solid #ddd;
     }
 
-    .button {
-      display: inline-block;
-      background: #1e90ff;
-      color: white;
-      padding: 12px 22px;
-      border-radius: 8px;
-      text-decoration: none;
+    .cart-item-name {
+      flex: 1;
       font-weight: bold;
     }
 
-    .section {
-      padding: 30px 20px;
-      text-align: center;
+    .quantity button {
+      padding: 5px 10px;
+      border: 1px solid #ccc;
+      background: white;
+      cursor: pointer;
+      border-radius: 5px;
     }
 
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-      gap: 20px;
-      margin-top: 20px;
+    .total {
+      text-align: right;
+      font-size: 22px;
+      font-weight: bold;
+      margin: 20px 0;
     }
 
-    .card {
-      background: #102a43;
-      padding: 25px;
-      border-radius: 15px;
-      border: 1px solid #1e90ff;
+    .checkout {
+      width: 100%;
+      padding: 14px;
+      border: none;
+      border-radius: 8px;
+      background: #16a34a;
+      color: white;
+      font-size: 17px;
+      font-weight: bold;
+      cursor: pointer;
     }
 
-   .player-card {
-  background: #0b1f33;
-  padding: 20px;
-  border-radius: 15px;
-  border: 1px solid #1e90ff;
-  margin-top: 15px;
-}
+    .checkout:hover {
+      background: #12803a;
+    }
 
-.player-card h4 {
-  font-size: 20px;
-  margin-bottom: 8px;
-}
-
-.player-card p {
-  color: #b9dfff;
-  margin-bottom: 8px;
-} 
-  
-    .card h3 {
-      margin-bottom: 10px;
+    .empty {
+      color: #777;
+      padding: 10px 0;
     }
 
     footer {
-      background: #0d1b2a;
+      background: #111;
+      color: white;
       text-align: center;
       padding: 20px;
-      margin-top: 20px;
-      color: #b9dfff;
     }
   </style>
 </head>
 
 <body>
-  
-  <button onclick="alert('Welcome to JNR.BENZEMA Football Hub!')">
-  Enter Football Hub
-</button>
 
   <header>
-    <h1>⚽ JNR.BENZEMA Football Hub</h1>
-    <p>Your home of football</p>
+    <h1>🛍️ JNR SHOP</h1>
+    <input
+      type="text"
+      id="search"
+      placeholder="Search for products..."
+      onkeyup="searchProducts()"
+    >
   </header>
 
-  <nav>
-    <a href="#">Home</a>
-    <a href="#">News</a>
-    <a href="#">Players</a>
-    <a href="#">Teams</a>
-    <a href="#">Matches</a>
-  </nav>
+  <div class="deals">
+    🔥 Today's Deals
+  </div>
 
-  <section class="hero">
-    <h2>Welcome to JNR.BENZEMA Football Hub</h2>
-    <p>Football news, players, teams, matches and updates all in one place.</p>
-    <a href="#" class="button">Explore Football</a>
+  <section class="products" id="productList">
+
+    <div class="product" data-name="T-Shirt">
+      <img
+        src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab?auto=format&fit=crop&w=600&q=80"
+        alt="T-Shirt"
+      >
+      <div class="product-info">
+        <h3>Classic T-Shirt</h3>
+        <div class="price">GH₵80</div>
+        <button class="add-btn" onclick="addToCart('Classic T-Shirt', 80)">
+          Add to Cart
+        </button>
+      </div>
+    </div>
+
+    <div class="product" data-name="Earphones">
+      <img
+        src="https://images.unsplash.com/photo-1590658268037-6bf12165a8df?auto=format&fit=crop&w=600&q=80"
+        alt="Wireless Earphones"
+      >
+      <div class="product-info">
+        <h3>Wireless Earphones</h3>
+        <div class="price">GH₵60</div>
+        <button class="add-btn" onclick="addToCart('Wireless Earphones', 60)">
+          Add to Cart
+        </button>
+      </div>
+    </div>
+
+    <div class="product" data-name="Sneakers">
+      <img
+        src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=600&q=80"
+        alt="Sneakers"
+      >
+      <div class="product-info">
+        <h3>Classic Sneakers</h3>
+        <div class="price">GH₵250</div>
+        <button class="add-btn" onclick="addToCart('Classic Sneakers', 250)">
+          Add to Cart
+        </button>
+      </div>
+    </div>
+
+    <div class="product" data-name="School Bag">
+      <img
+        src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?auto=format&fit=crop&w=600&q=80"
+        alt="School Bag"
+      >
+      <div class="product-info">
+        <h3>School Backpack</h3>
+        <div class="price">GH₵150</div>
+        <button class="add-btn" onclick="addToCart('School Backpack', 150)">
+          Add to Cart
+        </button>
+      </div>
+    </div>
+
+    <div class="product" data-name="Smartwatch">
+      <img
+        src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?auto=format&fit=crop&w=600&q=80"
+        alt="Smartwatch"
+      >
+      <div class="product-info">
+        <h3>Smartwatch</h3>
+        <div class="price">GH₵220</div>
+        <button class="add-btn" onclick="addToCart('Smartwatch', 220)">
+          Add to Cart
+        </button>
+      </div>
+    </div>
+
+    <div class="product" data-name="Phone Case">
+      <img
+        src="https://images.unsplash.com/photo-1601593346740-925612772716?auto=format&fit=crop&w=600&q=80"
+        alt="Phone Case"
+      >
+      <div class="product-info">
+        <h3>Premium Phone Case</h3>
+        <div class="price">GH₵45</div>
+        <button class="add-btn" onclick="addToCart('Premium Phone Case', 45)">
+          Add to Cart
+        </button>
+      </div>
+    </div>
+
+    <div class="product" data-name="Gamepad">
+      <img
+        src="https://images.unsplash.com/photo-1600080972464-8e5f35f63d08?auto=format&fit=crop&w=600&q=80"
+        alt="Game Controller"
+      >
+      <div class="product-info">
+        <h3>Game Controller</h3>
+        <div class="price">GH₵180</div>
+        <button class="add-btn" onclick="addToCart('Game Controller', 180)">
+          Add to Cart
+        </button>
+      </div>
+    </div>
+
+    <div class="product" data-name="Cap">
+      <img
+        src="https://images.unsplash.com/photo-1521369909029-2afed882baee?auto=format&fit=crop&w=600&q=80"
+        alt="Cap"
+      >
+      <div class="product-info">
+        <h3>Classic Cap</h3>
+        <div class="price">GH₵50</div>
+        <button class="add-btn" onclick="addToCart('Classic Cap', 50)">
+          Add to Cart
+        </button>
+      </div>
+    </div>
+
   </section>
 
-  <section class="section">
-    <h2>🔥 Football Hub</h2>
+  <section class="cart">
+    <h2>🛒 Your Cart</h2>
 
-    <div class="cards">
-
-<div class="card">
-  <h3>👑 Top Players</h3>
-  <p>Explore some of the biggest names in world football.</p>
-
-  <hr>
-
-  <h4>🇫🇷 Kylian Mbappé</h4>
-  <p>Forward • France</p>
-
-  <h4>🇳🇴 Erling Haaland</h4>
-  <p>Forward • Norway</p>
-
-  <h4>🇦🇷 Lionel Messi</h4>
-  <p>Forward • Argentina</p>
-
-  <h4>🇵🇹 Cristiano Ronaldo</h4>
-  <p>Forward • Portugal</p>
-</div>
-
-      
-
-      <div class="card">
-        <h3>🏆 Teams</h3>
-        <p>Explore clubs, national teams and competitions.</p>
-      </div>
-
-      <div class="card">
-        <h3>📅 Matches</h3>
-        <p>Keep track of exciting football matches.</p>
-      </div>
-
+    <div id="cartItems">
+      <p class="empty">Your cart is empty.</p>
     </div>
+
+    <div class="total">
+      Total: GH₵<span id="cartTotal">0</span>
+    </div>
+
+    <button class="checkout" onclick="checkout()">
+      📦 Checkout
+    </button>
   </section>
 
   <footer>
-    <p>© 2026 JNR.BENZEMA Football Hub</p>
-    <p>Made with ⚽ and passion</p>
+    <p>© 2026 JNR SHOP</p>
+    <p>Quality products at great prices.</p>
   </footer>
+
+  <script>
+    let cart = [];
+
+    function addToCart(name, price) {
+      const existing = cart.find(item => item.name === name);
+
+      if (existing) {
+        existing.quantity++;
+      } else {
+        cart.push({
+          name: name,
+          price: price,
+          quantity: 1
+        });
+      }
+
+      updateCart();
+
+      alert(name + " added to cart!");
+    }
+
+    function updateCart() {
+      const cartItems = document.getElementById("cartItems");
+      const cartTotal = document.getElementById("cartTotal");
+
+      cartItems.innerHTML = "";
+
+      if (cart.length === 0) {
+        cartItems.innerHTML =
+          '<p class="empty">Your cart is empty.</p>';
+      }
+
+      let total = 0;
+
+      cart.forEach((item, index) => {
+        total += item.price * item.quantity;
+
+        const div = document.createElement("div");
+        div.className = "cart-item";
+
+        div.innerHTML = `
+          <span class="cart-item-name">
+            ${item.name}
+          </span>
+
+          <span>
+            GH₵${item.price}
+          </span>
+
+          <span class="quantity">
+            <button onclick="changeQuantity(${index}, -1)">−</button>
+            ${item.quantity}
+            <button onclick="changeQuantity(${index}, 1)">+</button>
+          </span>
+
+          <span>
+            GH₵${item.price * item.quantity}
+          </span>
+        `;
+
+        cartItems.appendChild(div);
+      });
+
+      cartTotal.textContent = total;
+    }
+
+    function changeQuantity(index, amount) {
+      cart[index].quantity += amount;
+
+      if (cart[index].quantity <= 0) {
+        cart.splice(index, 1);
+      }
+
+      updateCart();
+    }
+
+    function checkout() {
+      if (cart.length === 0) {
+        alert("Your cart is empty. Please add a product first.");
+        return;
+      }
+
+      let total = 0;
+      let order = "JNR SHOP ORDER\\n\\n";
+
+      cart.forEach(item => {
+        const itemTotal = item.price * item.quantity;
+        total += itemTotal;
+
+        order +=
+          item.name +
+          " x" +
+          item.quantity +
+          " = GH₵" +
+          itemTotal +
+          "\\n";
+      });
+
+      order += "\\nTOTAL: GH₵" + total;
+
+      alert(
+        "✅ ORDER RECEIVED!\\n\\n" +
+        order +
+        "\\n\\nThank you for shopping with JNR SHOP!"
+      );
+    }
+
+    function searchProducts() {
+      const search =
+        document.getElementById("search").value.toLowerCase();
+
+      const products =
+        document.querySelectorAll(".product");
+
+      products.forEach(product => {
+        const name =
+          product.getAttribute("data-name").toLowerCase();
+
+        if (name.includes(search)) {
+          product.style.display = "";
+        } else {
+          product.style.display = "none";
+        }
+      });
+    }
+
+    updateCart();
+    
+  </script>
 
 </body>
 </html>
